@@ -1,10 +1,10 @@
 package com.roside.service;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +17,7 @@ import java.util.List;
  * Created by Eric on 2017-01-22.
  */
 @Service
+@Cacheable
 public class UserDetailsServiceImpl implements UserDetailsService{
 
 
@@ -26,6 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     private UserService userService;
 
     @Override
+    @Cacheable(value = "userCache")
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("--------------loadUserByUsername-----------------");
         logger.debug("-----------------------login: " + username);

@@ -22,6 +22,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 
 /**
  * Created by Eric on 2017-01-22.
@@ -49,7 +50,7 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String authToken = httpRequest.getHeader(tokenHeader);
         String username = tokenUtils.getUsernameFromToken(authToken);
-
+        logger.debug("-------JwtAuthenticationTokenFilter: username---------{}", username);
         logger.debug("Created: " + tokenUtils.getCreatedDateFromToken(authToken) +
                 "    Expiration: " + tokenUtils.getExpirationDateFromToken(authToken));
         if (username != null) {
@@ -63,6 +64,8 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
                         username, null, AuthorityUtils.commaSeparatedStringToAuthorityList(commaSprAuthorities));
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            }else{
+                logger.debug("-------JwtAuthenticationTokenFilter: token validate failed---------");
             }
         }
         try {

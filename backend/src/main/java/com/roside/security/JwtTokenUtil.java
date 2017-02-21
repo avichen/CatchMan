@@ -1,6 +1,6 @@
 package com.roside.security;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;

@@ -1,6 +1,6 @@
 package com.roside.security.entity;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 /**

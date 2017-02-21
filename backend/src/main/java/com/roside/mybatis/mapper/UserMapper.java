@@ -1,6 +1,6 @@
 package com.roside.mybatis.mapper;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.io.Serializable;
@@ -10,11 +10,13 @@ import java.io.Serializable;
  */
 
 @Mapper
-public interface UserMapper extends Serializable {
+public interface UserMapper {
 
     User getUserById(int id);
 
     User getUserByMail(String email);
 
     User getUserByNameAndPassword(User user);
+
+    int registerUser(User user);
 }

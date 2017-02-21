@@ -1,7 +1,8 @@
 package com.roside.service;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import com.roside.mybatis.mapper.UserMapper;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-
 
     @Autowired
     private UserMapper userMapper;
@@ -26,5 +26,9 @@ public class UserService {
 
     public User getUserByNameAndPassword(User user){
         return this.userMapper.getUserByNameAndPassword(user);
+    }
+
+    public int registerUser(User user){
+        return userMapper.registerUser(user);
     }
 }

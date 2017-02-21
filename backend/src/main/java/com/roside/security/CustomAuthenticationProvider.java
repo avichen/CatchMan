@@ -1,6 +1,6 @@
 package com.roside.security;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import com.roside.service.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

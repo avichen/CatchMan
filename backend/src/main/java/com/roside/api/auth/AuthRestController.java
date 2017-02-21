@@ -1,6 +1,6 @@
 package com.roside.api.auth;
 
-import com.roside.mybatis.entity.User;
+import com.roside.mybatis.domain.User;
 import com.roside.security.JwtTokenUtil;
 import com.roside.security.service.JwtAuthenticationRequest;
 import com.roside.security.service.JwtAuthenticationResponse;

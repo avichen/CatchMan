@@ -1,5 +1,6 @@
 package com.roside.security;
 
+import com.roside.system.JsonResponse;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;

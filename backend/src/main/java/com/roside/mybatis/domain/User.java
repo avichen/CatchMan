@@ -1,4 +1,4 @@
-package com.roside.mybatis.entity;
+package com.roside.mybatis.domain;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 3035303850009432731L;
 
-    private int id;
+    private Integer id;
     private String username;
     private String password;
     private String regist_time;
