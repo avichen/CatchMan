@@ -2,8 +2,8 @@ package com.roside.service;
 
 import com.roside.mybatis.domain.User;
 import com.roside.mybatis.mapper.UserMapper;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class UserService {
+public class UserService implements UserMapper{
+
+    private static final String SALT = "$2a$10$necBOMlJucIQq.pEjXnQUe";
 
     @Autowired
     private UserMapper userMapper;
@@ -25,10 +27,12 @@ public class UserService {
     }
 
     public User getUserByNameAndPassword(User user){
+        user.setPassword(BCrypt.hashpw(user.getPassword(), SALT));
         return this.userMapper.getUserByNameAndPassword(user);
     }
 
     public int registerUser(User user){
+        user.setPassword(BCrypt.hashpw(user.getPassword(), SALT));
         return userMapper.registerUser(user);
     }
 }
